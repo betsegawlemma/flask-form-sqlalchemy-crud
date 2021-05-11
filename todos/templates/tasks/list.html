@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>List of Tasks</h2>
+<hr>
+<a class="btn btn-primary" href="{{url_for('tasks.create')}}" role="button">New Task</a>
+<hr>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <th scope="row">{{task.id}}</th>
+            <td>{{task.title}}</td>
+            <td><a href="{{url_for('tasks.detail', id = task.id)}}">View Detail</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
